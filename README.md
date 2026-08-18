@@ -24,6 +24,12 @@
 
 <img src="public/images/dose-selection-screenshot.png" alt="食欲粉碎机剂量选择页截图" width="360" />
 
+### ⏱️ 15 秒长按体验
+
+🎵 按住中央按钮完成 15 秒虚拟体验；松手、移出或切换页面时进度会立即归零。声音与震动仅作为可选的游戏反馈。
+
+<img src="public/images/injection-hold-screenshot.png" alt="食欲粉碎机十五秒长按体验页截图" width="360" />
+
 ## 技术栈
 
 - Next.js App Router
