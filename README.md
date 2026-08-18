@@ -55,6 +55,8 @@ npm run typecheck
 npm run build
 ```
 
+运行 `npm install` 后，Git 提交前会自动执行 ESLint 和 TypeScript 类型检查。任一检查失败时，本次提交会被阻止。
+
 ## 目录
 
 - `src/app`：欢迎页与五个核心流程路由
