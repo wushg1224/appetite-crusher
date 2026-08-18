@@ -14,3 +14,8 @@
 # TypeScript
 *.tsbuildinfo
 .vercel
+
+# AI agent files
+AGENTS.md
+SPEC.md
+CLAUDE.md
