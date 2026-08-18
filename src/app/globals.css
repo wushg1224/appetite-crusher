@@ -79,7 +79,7 @@ a {
   font-size: clamp(2.25rem, 11vw, 3.2rem);
   font-weight: 950;
   letter-spacing: -0.075em;
-  line-height: 0.98;
+  line-height: 0.86;
   text-shadow: 3px 3px 0 rgb(255 255 255 / 80%);
 }
 
