@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+echo "Running ESLint before commit..."
+npm run lint
+
+echo "Running TypeScript type checking before commit..."
+npm run typecheck
