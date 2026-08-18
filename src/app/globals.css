@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fff8e8;
+  --blue: #cdebf7;
+  --rose-soft: #ffd8e6;
+  --rose: #f36f9c;
+  --rose-dark: #c94c7a;
+  --ink: #58475f;
+  --muted: #77667d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--blue);
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 15% 10%, rgb(255 255 255 / 75%) 0 8%, transparent 9%),
+    linear-gradient(155deg, var(--rose-soft) 0%, var(--cream) 48%, var(--blue) 100%);
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.font-pixel {
+  font-family: "Arial Black", "PingFang SC", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-shadow: 3px 3px 0 rgb(255 255 255 / 85%);
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
