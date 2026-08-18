@@ -12,7 +12,17 @@
 
 ## 界面预览
 
+### 🌸 欢迎页
+
+🏠 打开网站即可看到娱乐定位、15 秒体验提示和免责声明，也可以从这里开始体验或查看本机历史记录。
+
 <img src="public/images/homepage-screenshot.png" alt="食欲粉碎机首页截图" width="360" />
+
+### 🎮 剂量选择页
+
+🎀 从六档固定游戏剂量中选择一档。选择只影响界面显示与本机记录，不代表剂量推荐或真实药效。
+
+<img src="public/images/dose-selection-screenshot.png" alt="食欲粉碎机剂量选择页截图" width="360" />
 
 ## 技术栈
 
