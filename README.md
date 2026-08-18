@@ -2,6 +2,14 @@
 
 基于 `SPEC.md` 搭建的 Next.js 手机网页项目。产品界面名称按规格使用“食欲粉碎机”。
 
+## 在线体验
+
+项目已部署，可直接在线访问：
+
+👉 [点击访问食欲粉碎机](https://appetite-crusher.vercel.app/)
+
+> 本网站仅供娱乐，不代表真实药效或医疗建议。
+
 ## 技术栈
 
 - Next.js App Router
