@@ -14,3 +14,7 @@
 # TypeScript
 *.tsbuildinfo
 .vercel
+
+#agent
+/AGENTS.md
+SPEC.md
