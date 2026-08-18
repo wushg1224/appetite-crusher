@@ -10,6 +10,10 @@
 
 > 本网站仅供娱乐，不代表真实药效或医疗建议。
 
+## 界面预览
+
+<img src="public/images/homepage-screenshot.png" alt="食欲粉碎机首页截图" width="360" />
+
 ## 技术栈
 
 - Next.js App Router
