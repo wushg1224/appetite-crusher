@@ -294,7 +294,7 @@ export function InjectionExperience() {
           </button>
 
           <div className="inject-pen-track" aria-hidden="true">
-            <div style={{ transform: `translateX(${progress * 54}%)` }}>
+            <div>
               <PixelPen />
             </div>
           </div>
