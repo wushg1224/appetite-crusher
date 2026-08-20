@@ -845,14 +845,16 @@ a {
   right: 1.1rem;
   bottom: 2.4rem;
   left: 1.1rem;
+  display: flex;
   height: 5rem;
+  align-items: flex-end;
+  justify-content: center;
   overflow: hidden;
   border-bottom: 3px dashed rgb(88 71 95 / 22%);
 }
 
 .inject-pen-track > div {
   width: 69%;
-  transition: transform 90ms linear;
   filter: drop-shadow(0 8px 7px rgb(88 71 95 / 14%));
 }
 
