@@ -8,7 +8,7 @@
 
 👉 [点击访问食欲粉碎机](https://appetite-crusher.vercel.app/)
 
-> 本网站仅供娱乐，不代表真实药效或医疗建议。
+> 本网站仅供娱乐，不代表真实药效或医疗建议。做完啦 yeah～～～～～～
 
 ## 界面预览
 
@@ -30,6 +30,9 @@
 
 <img src="public/images/injection-hold-screenshot.png" alt="食欲粉碎机十五秒长按体验页截图" width="360" />
 
+
+
+
 ## 技术栈
 
 - Next.js App Router
@@ -41,21 +44,12 @@
 ## 本地运行
 
 ```bash
-npm install
+npm install 如果安了 就不装
 npm run dev
 ```
 
 打开 `http://localhost:3000`。
 
-## 检查
-
-```bash
-npm run lint
-npm run typecheck
-npm run build
-```
-
-运行 `npm install` 后，Git 提交前会自动执行 ESLint 和 TypeScript 类型检查。任一检查失败时，本次提交会被阻止。
 
 ## 目录
 
@@ -68,4 +62,3 @@ npm run build
 - `src/types`：剂量、部位和历史记录类型
 - `public`：图标、原创图片和合法授权音频
 
-当前阶段是可运行的基础工程：欢迎页已具备基础视觉，其余流程页面是明确标注的开发骨架，完整交互仍待实现。
