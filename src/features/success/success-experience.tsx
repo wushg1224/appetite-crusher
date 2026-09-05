@@ -7,6 +7,7 @@ import { AppShell } from "@/components/app-shell";
 import {
   calculateCurrentStreak,
   readHistory,
+  subscribeToHistory,
 } from "@/features/history/storage";
 import { createShareCardBlob } from "@/features/share/share-card";
 import { canShare } from "@/lib/browser/capabilities";
@@ -21,12 +22,6 @@ function getCurrentStreak(): number {
   } catch {
     return 0;
   }
-}
-
-function subscribeToHistory(onStoreChange: () => void) {
-  queueMicrotask(onStoreChange);
-  window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
 }
 
 export function SuccessExperience() {
