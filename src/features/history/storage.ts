@@ -1,31 +1,105 @@
-import type { ExperienceRecord, StoredHistory } from "@/types/experience";
+import {
+  DOSES_MG,
+  type ExperienceRecord,
+  type StoredHistory,
+} from "@/types/experience";
 
 export const HISTORY_STORAGE_KEY = "appetite-crusher:history:v1";
+const HISTORY_CHANGE_EVENT = "appetite-crusher:history-change";
 
 export const EMPTY_HISTORY: StoredHistory = {
   version: 1,
   records: [],
 };
 
-export function readHistory(): StoredHistory {
-  if (typeof window === "undefined") return EMPTY_HISTORY;
+function isRecord(value: unknown): value is ExperienceRecord {
+  if (typeof value !== "object" || value === null) return false;
 
-  const value = window.localStorage.getItem(HISTORY_STORAGE_KEY);
+  const record = value as Partial<ExperienceRecord>;
+  const completedAt = typeof record.completedAt === "string"
+    ? new Date(record.completedAt)
+    : null;
+
+  return (
+    typeof record.id === "string"
+    && record.id.length > 0
+    && typeof record.doseMg === "number"
+    && (DOSES_MG as readonly number[]).includes(record.doseMg)
+    && (record.site === "abdomen" || record.site === "thigh")
+    && typeof record.completedAt === "string"
+    && completedAt instanceof Date
+    && !Number.isNaN(completedAt.getTime())
+    && typeof record.localDate === "string"
+    && localDateToDayNumber(record.localDate) !== null
+  );
+}
+
+function notifyHistoryChange(): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(HISTORY_CHANGE_EVENT));
+}
+
+export function parseHistorySnapshot(value: string | null): StoredHistory {
   if (!value) return EMPTY_HISTORY;
 
   try {
-    const parsed = JSON.parse(value) as StoredHistory;
-    return parsed.version === 1 && Array.isArray(parsed.records)
-      ? parsed
+    const parsed = JSON.parse(value) as unknown;
+
+    if (typeof parsed !== "object" || parsed === null) return EMPTY_HISTORY;
+
+    const history = parsed as Partial<StoredHistory>;
+    return history.version === 1
+      && Array.isArray(history.records)
+      && history.records.every(isRecord)
+      ? { version: 1, records: history.records }
       : EMPTY_HISTORY;
   } catch {
     return EMPTY_HISTORY;
   }
 }
 
+export function getHistorySnapshot(): string | null {
+  if (typeof window === "undefined") return null;
+
+  try {
+    return window.localStorage.getItem(HISTORY_STORAGE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+export function readHistory(): StoredHistory {
+  return parseHistorySnapshot(getHistorySnapshot());
+}
+
 export function writeHistory(history: StoredHistory): void {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history));
+  notifyHistoryChange();
+}
+
+export function clearHistory(): void {
+  if (typeof window === "undefined") return;
+  window.localStorage.removeItem(HISTORY_STORAGE_KEY);
+  notifyHistoryChange();
+}
+
+export function subscribeToHistory(onStoreChange: () => void): () => void {
+  if (typeof window === "undefined") return () => {};
+
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key === null || event.key === HISTORY_STORAGE_KEY) {
+      onStoreChange();
+    }
+  };
+
+  window.addEventListener(HISTORY_CHANGE_EVENT, onStoreChange);
+  window.addEventListener("storage", handleStorage);
+
+  return () => {
+    window.removeEventListener(HISTORY_CHANGE_EVENT, onStoreChange);
+    window.removeEventListener("storage", handleStorage);
+  };
 }
 
 const DAY_IN_MS = 24 * 60 * 60 * 1000;

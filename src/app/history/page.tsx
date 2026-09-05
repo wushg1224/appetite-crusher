@@ -1,10 +1,12 @@
-import { FlowPlaceholder } from "@/components/flow-placeholder";
+import type { Metadata } from "next";
+
+import { HistoryExperience } from "@/features/history/history-experience";
+
+export const metadata: Metadata = {
+  title: "历史记录",
+  description: "查看当前浏览器中保存的虚拟体验记录和连续打卡天数。",
+};
 
 export default function HistoryPage() {
-  return (
-    <FlowPlaceholder
-      description="这里将从当前浏览器的 localStorage 读取成功记录、计算自然日连续打卡，并提供二次确认后清空全部记录。"
-      title="历史记录"
-    />
-  );
+  return <HistoryExperience />;
 }
